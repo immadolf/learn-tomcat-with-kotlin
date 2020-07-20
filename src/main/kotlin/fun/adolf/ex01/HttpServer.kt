@@ -46,7 +46,7 @@ class HttpServer {
                     //检查是否是请求命令
                     shutdown = request.uri.equals(SHUTDOWN_COMMAND)
                 }
-            } catch (e:Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
                 continue
             }
