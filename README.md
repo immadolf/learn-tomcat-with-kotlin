@@ -4,6 +4,9 @@
 - 《Tomcat 架构解析》
 在上本书的基础上，通过这本书看看新版的 Tomcat 中有了哪些变动，这一块的内容会放到单独的 git 分支中。
 
+### 配套博客地址
+https://adolf.fun/#/docs/Tomcat/README
+
 ### ex01遇到的问题
 1. 浏览器发起的请求为什么只有第一次可以解析到URI，后续的解析出来都是空？
 答：当正确设置response响应头后，此现象消失。
@@ -13,3 +16,5 @@
 - 没有返回response的header，只返回了html，在浏览器上的现象是一开始有/index.html的请求，然后突然又消失了
 - index.html文件总字符长度是122(不包含换行符),当采用CRLF换行符时，总长度为122 + 9*2 = 140，这个时候,浏览器就会报长度不匹配，
 抓包看了一下实际传输的数据，发现只有0x0a(LF)而没有0x0d(CR),这说明最终发送的时候换行符被替换了。解决办法是不计算换行符的长度。
+
+3. 无法使用inputStream.readBytes方法来读取全部数据，详见https://youtrack.jetbrains.com/issue/KT-40434
