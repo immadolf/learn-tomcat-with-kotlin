@@ -7,10 +7,17 @@ import java.net.InetAddress
 import java.net.ServerSocket
 import kotlin.system.exitProcess
 
-class HttpServer1 {
+/**
+ *
+ *
+ * @author adolf
+ * @date 2020/11/11
+ * @since
+ */
+class HttpServer2 {
 
     private var shutdown = false
-    private val servletProcessor1: ServletProcessor1 = ServletProcessor1()
+    private val servletProcessor2: ServletProcessor2 = ServletProcessor2()
     private val staticResponseProcessor: StaticResponseProcessor = StaticResponseProcessor()
 
     companion object {
@@ -50,7 +57,7 @@ class HttpServer1 {
                     if (isStaticResource(request.uri)) {
                         staticResponseProcessor.process(request, response)
                     } else {
-                        servletProcessor1.process(request, response)
+                        servletProcessor2.process(request, response)
                     }
                     //==================================
                     //检查是否是请求命令
@@ -72,6 +79,6 @@ class HttpServer1 {
 
 @ExperimentalStdlibApi
 fun main() {
-    val server = HttpServer1()
+    val server = HttpServer2()
     server.await()
 }

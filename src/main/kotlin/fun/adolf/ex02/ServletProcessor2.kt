@@ -10,7 +10,7 @@ import java.net.URLStreamHandler
 import javax.servlet.Servlet
 
 
-class ServletProcessor1 {
+class ServletProcessor2 {
     private val log: Log = LogFactory.get()
 
     fun process(servletRequest: Request, servletResponse: Response) {
@@ -27,7 +27,7 @@ class ServletProcessor1 {
         //由于loadClass时必须指定类的全限定名，因此servletName对应的servlet类必须位于源码的根目录下（即没有package）
         val servletClass: Class<*> = loader.loadClass(servletName)
         val servlet = servletClass.newInstance() as Servlet
-        servlet.service(servletRequest, servletResponse)
+        servlet.service(RequestFacade(servletRequest), ResponseFacade(servletResponse))
     }
 
 }
